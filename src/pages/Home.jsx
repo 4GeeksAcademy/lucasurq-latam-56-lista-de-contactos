@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 export function Home() {
 
     const navigate = useNavigate();
@@ -9,7 +8,16 @@ export function Home() {
 
     const getData = async () => {
         try {
-            const res = await fetch('https://playground.4geeks.com/contact/agendas/lucasurq11/contacts');
+            const res = await fetch(`https://playground.4geeks.com/contact/agendas/lucasurq11/contacts`);
+
+            if (res.status === 404) {
+                const createRes = await fetch(`https://playground.4geeks.com/contact/agendas/lucasurq11`, {
+                    method: 'POST'
+                });
+
+                res = await fetch(`https://playground.4geeks.com/contact/agendas/lucasurq11/contacts`);
+            }
+
             if (!res.ok) {
                 console.log("Ha ocurrido un error.");
             }

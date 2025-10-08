@@ -6,7 +6,7 @@ export function Formulario() {
 
     // Obtenemos el contacto que se va a cambiar.-
     const location = useLocation();
-    const cambiarContacto = location.state?.contact; // ?. es un operador que devuelve un 'undefined' en caso de que location.state no tenga ningún contacto dentro (cuando entramos por el boton 'add new contact') y asi no rompe la página.-
+    const cambiarContacto = location.state?.contact;
 
     const navigate = useNavigate(); // Para ir al la lista de contactos.-
     const [formData, setFormData] = useState({
@@ -139,7 +139,7 @@ export function Formulario() {
                 type="button"
                 className="btn btn-link d-flex"
                 onClick={() => {
-                    navigate("/listadecontacto");
+                    navigate("/listacontactos");
                 }}
             >or get back to contacts
             </button>
